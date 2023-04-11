@@ -31,7 +31,7 @@ function displayChart() {
     const grid = "#grid-no-" + index;
     document.querySelector(grid).style.height = queue[index] * 10 + "px";
   }
-  document.querySelector("#data").textContent = "Data:  " + queue.join(", ");
+  // document.querySelector("#data").textContent = "Data:  " + queue.join(", ");
 }
 
 // update queue => FIFO
