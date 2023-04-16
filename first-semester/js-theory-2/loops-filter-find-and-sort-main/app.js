@@ -86,9 +86,33 @@ function initApp() {
   console.log("initApp: app.js is running 🎉");
   //   forEach
   loopThroughNames();
+  //   for loop
   loopThroughYears(years);
   loopThroughFiveFirstYears(years);
   loopThroughFiveLastYears(years);
+  logNumbers();
+  //   for of loop
+  loopThroughTeachers();
+  teachersOver40();
+  forOfSearchTeachersByName("er");
+  //   for in loop
+  forInTeacher(teacher);
+  //   while loop
+  whileTeachersLength();
+  whileTeacherIsLecturer();
+  whileSearchByName("SEN");
+  //   array methods - filter
+  filterTeachersOver40();
+  filterTeachersByName("SEN");
+  filterLecturers();
+  //   array methods - find
+  findTeacherByAge();
+  findTeacherByName();
+  //   array methods - sort
+  sortNames();
+  sortYears();
+  sortTeachersByName();
+  sortTeachersByAge();
 }
 
 // ========== forEach ========== //
@@ -165,12 +189,191 @@ function loopThroughFiveLastYears(years) {
     console.log(year);
   }
 }
+
+function logNumbers() {
+  console.log("---logNumbers---");
+  console.log("Log 0-9");
+  for (let index = 0; index < 10; index++) {
+    console.log(index);
+  }
+  console.log("Log 1-10");
+  for (let index = 1; index < 11; index++) {
+    console.log(index);
+  }
+  console.log("Log 10-0");
+  for (let index = 10; index >= -1; index--) {
+    index === -1 ? console.log("Lift off") : console.log(index);
+  }
+  console.log("Log even 1-19");
+  for (let index = 2; index < 20; index++) {
+    console.log(index);
+    ++index;
+  }
+  console.log("Log double 1-16777216");
+  for (let index = 1; index < 16777216; index++) {
+    index *= 2;
+    console.log(index);
+  }
+  console.log("Log 111-138");
+  for (let index = 111; index < 138; index++) {
+    console.log(index);
+    index += 2;
+  }
+  console.log("Log 100-0 in 10 steps");
+  for (let index = 100; index >= 0; index--) {
+    console.log(index);
+    index -= 9;
+  }
+}
+
 // ========== for of loop ========== //
+function loopThroughTeachers() {
+  console.log("---loopThroughTeachers---");
+  for (const teacher of teachers) {
+    console.log(teacher);
+  }
+}
+
+function teachersOver40() {
+  console.log("---teachersOver40---");
+  const results = [];
+  for (const teacher of teachers) {
+    if (teacher.age >= 40) {
+      results.push(teacher);
+    }
+  }
+  console.log(results);
+}
+
+function forOfSearchTeachersByName(searchValue) {
+  console.log("---forOfSearchTeachersByName---");
+  const results = [];
+  for (const teacher of teachers) {
+    if (teacher.name.includes(searchValue)) {
+      results.push(teacher);
+    }
+  }
+  console.log(results);
+}
 
 // ========== for in loop ========== //
+function forInTeacher(obj) {
+  console.log("---forInTeacher---");
+  for (const key in obj) {
+    console.log(key + ": " + obj[key]);
+  }
+}
 
 // ========== while loops ========== //
+function whileTeachersLength() {
+  console.log("---whileTeachersLength---");
+  let index = 0;
+  while (index < teachers.length) {
+    console.log(teachers[index]);
+    index++;
+  }
+}
+
+function whileTeacherIsLecturer() {
+  console.log("---whileTeacherIsLecturer ---");
+  let index = 0;
+  while (index < teachers.length) {
+    const teacher = teachers[index];
+    if (teacher.title === "Lecturer") {
+      console.log(teacher);
+    }
+    index++;
+  }
+}
+
+function whileSearchByName(searchValue) {
+  console.log("---whileSearchByName---");
+  const results = [];
+  let index = 0;
+  while (index < teachers.length) {
+    const teacher = teachers[index];
+    if (teacher.name.toLowerCase().includes(searchValue.toLowerCase())) {
+      results.push(teacher);
+    }
+    index++;
+  }
+  console.log(results);
+}
 
 // ========== Filter items: array.filter(...) ========== //
+function filterTeachersOver40() {
+  console.log("---filterTeachersOver40---");
+  const results = teachers.filter(checkAge);
+  console.log(results);
+}
+function checkAge(teacher) {
+  return teacher.age >= 40;
+}
+
+function filterTeachersByName(searchValue) {
+  console.log("---filterTeachersByName---");
+  searchValue = searchValue.toLowerCase();
+  const results = teachers.filter(checkName);
+  function checkName(teacher) {
+    return teacher.name.includes(searchValue);
+  }
+  console.log(results);
+}
+
+function filterLecturers() {
+  console.log("---filterLecturers---");
+  const results = teachers.filter(checkTitle);
+  function checkTitle(teacher) {
+    return teacher.title === "Lecturer";
+  }
+  console.log(results);
+}
+
+// ========== Sorting: array.find() ========== //
+function findTeacherByAge() {
+  console.log("---findTeacherByAge---");
+  const results = teachers.find(checkAge);
+  function checkAge(teacher) {
+    return teacher.age === 36;
+  }
+  console.log(results);
+}
+
+function findTeacherByName() {
+  console.log("---findTeacherByName---");
+  const results = teachers.find(checkName);
+  function checkName(teacher) {
+    return teacher.name === "Martin Hansen";
+  }
+  console.log(results);
+}
 
 // ========== Sorting: array.sort() ========== //
+function sortNames() {
+  console.log("---sortNames---");
+  names.sort();
+  console.log(names);
+}
+function sortYears() {
+  console.log("---sortYears---");
+  years.sort();
+  console.log(years);
+}
+
+function sortTeachersByName() {
+  console.log("---sortTeachersByName---");
+  teachers.sort(compareName);
+  function compareName(teacher1, teacher2) {
+    return teacher1.name.localeCompare(teacher2.name);
+  }
+  console.log(teachers);
+}
+
+function sortTeachersByAge() {
+  console.log("---sortTeachersByAge---");
+  teachers.sort(compareAge);
+  function compareAge(teacher1, teacher2) {
+    return teacher1.age - teacher2.age;
+  }
+  console.log(teachers);
+}
