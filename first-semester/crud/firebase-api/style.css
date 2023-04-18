@@ -16,7 +16,7 @@ h1 {
   padding: 0.5em;
 }
 
-#grid {
+#grid-posts {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1em;
@@ -67,23 +67,23 @@ h1 {
 }
 
 @media (min-width: 600px) {
-  #grid {
+  #grid-posts {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 992px) {
-  #grid {
+  #grid-posts {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media (min-width: 1200px) {
-  #grid {
+  #grid-posts {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 @media (min-width: 1500px) {
-  #grid {
+  #grid-posts {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
