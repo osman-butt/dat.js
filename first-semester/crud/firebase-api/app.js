@@ -25,7 +25,7 @@ async function updateGridPosts() {
   }
 }
 
-// === CRUD (READ) === //
+// === READ (GET) === //
 async function getPosts() {
   console.log("---getZipData---");
   const response = await fetch(`${endpoint}/posts.json`);
@@ -34,13 +34,27 @@ async function getPosts() {
   return posts;
 }
 
-// === CRUD (DELETE) === //
+// === DELETE (DELETE) === //
 async function deletePost(post) {
   const id = post.id;
   console.log("---deletePost---");
   const url = `${endpoint}/posts/${id}.json`;
   const res = await fetch(url, { method: "DELETE" });
   console.log(res);
+  updateGridPosts();
+}
+
+// === CREATE (POST) === //
+async function createPost(title, image) {
+  const newPost = { title, image };
+  const postAsJson = JSON.stringify(newPost);
+
+  const res = await fetch(`${endpoint}/posts.json`, {
+    method: "POST",
+    body: postAsJson,
+  });
+  const data = await res.json();
+  console.log(data);
   updateGridPosts();
 }
 

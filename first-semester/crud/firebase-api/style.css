@@ -36,7 +36,7 @@ h1 {
 
 .grid-item:hover {
   box-shadow: 0 8px 16px 0 black;
-  animation: zoom-in 0.4s forwards;
+  animation: zoom-in 0.3s forwards;
 }
 
 @keyframes zoom-in {
@@ -53,6 +53,17 @@ h1 {
 
 .grid-item > button {
   text-align: center;
+  padding: 0.5em 1em 0.5em;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  border-radius: 1em;
+}
+
+.grid-item > button:hover {
+  box-shadow: 0 8px 16px 0 black;
 }
 
 @media (min-width: 600px) {
