@@ -30,8 +30,29 @@ h1 {
   padding: 1.5em;
   background-color: white;
   transition: 0.5s;
-  cursor: pointer;
   border-radius: 2em;
+  text-align: center;
+}
+
+.grid-item:hover {
+  box-shadow: 0 8px 16px 0 black;
+  animation: zoom-in 0.4s forwards;
+}
+
+@keyframes zoom-in {
+  100% {
+    transform: scale(1.03);
+  }
+}
+
+.grid-item > img,
+/* .grid-item > h2, */
+.grid-item > button {
+  cursor: pointer;
+}
+
+.grid-item > button {
+  text-align: center;
 }
 
 @media (min-width: 600px) {
@@ -63,4 +84,13 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+#no-data {
+  text-align: center;
+  color: white;
+}
+
+.hidden {
+  display: none;
 }
