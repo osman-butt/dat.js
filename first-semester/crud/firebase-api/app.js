@@ -158,11 +158,11 @@ function displayUser(users) {
   document
     .querySelector("#grid-users")
     .insertAdjacentHTML("beforeend", postHtml);
-  // document
-  //   .querySelector("#grid-users article:last-child img")
-  //   .addEventListener("click", function () {
-  //     showModal(users);
-  //   });
+  document
+    .querySelector("#grid-users article:last-child img")
+    .addEventListener("click", function () {
+      showModalUsers(users);
+    });
   // document
   //   .querySelector("#grid-users article:last-child button")
   //   .addEventListener("click", function () {
@@ -176,4 +176,13 @@ function showModal(post) {
   document.querySelector("#modal-title").textContent = post.title;
   document.querySelector("#modal-body").textContent = post.body;
   document.querySelector("#modal-post").showModal();
+}
+function showModalUsers(users) {
+  console.log("---showModal---");
+  document.querySelector("#modal-users-img").src = users.image;
+  document.querySelector("#modal-users-name").textContent = users.name;
+  document.querySelector("#modal-users-title").textContent = users.title;
+  document.querySelector("#modal-users-mail").textContent = users.mail;
+  document.querySelector("#modal-users-phone").textContent = users.phone;
+  document.querySelector("#modal-users").showModal();
 }

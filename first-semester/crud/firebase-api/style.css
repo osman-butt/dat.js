@@ -107,6 +107,11 @@ h1 {
   color: white;
 }
 
+.section-name {
+  text-align: center;
+  color: white;
+}
+
 .hidden {
   display: none;
 }

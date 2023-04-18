@@ -13,7 +13,9 @@
   </head>
   <body>
     <header><h1>Firebase API</h1></header>
+    <h2 class="section-name">POSTS</h2>
     <section id="grid-posts"></section>
+    <h2 class="section-name">USERS</h2>
     <section id="grid-users"></section>
     <section id="no-data" class="hidden">
       <h2>NO DATA AVAILABLE</h2>
@@ -35,6 +37,33 @@
           <p>
             <span class="object-property"></span>
             <span id="modal-body"></span>
+          </p>
+        </section>
+      </section>
+      <form method="dialog">
+        <button>CLOSE</button>
+      </form>
+    </dialog>
+    <dialog id="modal-users">
+      <h2 id="modal-users-name"></h2>
+      <section class="modal-users-grid">
+        <img id="modal-users-img" src="" />
+        <section id="modal-users-details">
+          <h2>
+            <span class="object-property"></span>
+            <span id="modal-users-name"></span>
+          </h2>
+          <h3>
+            <span class="object-property"></span>
+            <span id="modal-users-title"></span>
+          </h3>
+          <p>
+            <span class="object-property">E-mail:</span>
+            <span id="modal-users-mail"></span>
+          </p>
+          <p>
+            <span class="object-property">Phone:</span>
+            <span id="modal-users-phone"></span>
           </p>
         </section>
       </section>
