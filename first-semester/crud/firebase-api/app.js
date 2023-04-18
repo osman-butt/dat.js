@@ -42,4 +42,15 @@ function displayPost(post) {
         </article>
   `;
   document.querySelector("#grid").insertAdjacentHTML("beforeend", postHtml);
+  document
+    .querySelector("#grid article:last-child")
+    .addEventListener("click", function () {
+      showModal(post);
+    });
+}
+
+function showModal(post) {
+  document.querySelector("#modal-img").src = post.image;
+  document.querySelector("#modal-title").textContent = post.title;
+  document.querySelector("#modal-post").showModal();
 }

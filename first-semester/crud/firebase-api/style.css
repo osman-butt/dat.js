@@ -1,5 +1,4 @@
 body {
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-family: "Work Sans", sans-serif;
   margin: 0;
   background-color: grey;
@@ -22,6 +21,8 @@ h1 {
   grid-template-columns: 1fr;
   gap: 1em;
   padding: 1em;
+  margin: auto;
+  justify-self: center;
 }
 
 .grid-item {
