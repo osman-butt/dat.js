@@ -16,7 +16,8 @@ h1 {
   padding: 0.5em;
 }
 
-#grid-posts {
+#grid-posts,
+#grid-users {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1em;
@@ -67,23 +68,27 @@ h1 {
 }
 
 @media (min-width: 600px) {
-  #grid-posts {
+  #grid-posts,
+  #grid-users {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 992px) {
-  #grid-posts {
+  #grid-posts,
+  #grid-users {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media (min-width: 1200px) {
-  #grid-posts {
+  #grid-posts,
+  #grid-users {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 @media (min-width: 1500px) {
-  #grid-posts {
+  #grid-posts,
+  #grid-users {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
