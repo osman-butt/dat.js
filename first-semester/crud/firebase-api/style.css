@@ -22,7 +22,6 @@ h1 {
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: rgb(117, 214, 117);
   animation: fade-out 3s forwards;
 }
 

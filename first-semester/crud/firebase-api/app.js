@@ -126,6 +126,9 @@ async function deletePost(post) {
   const id = post.id;
   const url = `${endpoint}/${query}/${id}.json`;
   const res = await fetch(url, { method: "DELETE" });
+  if (res.ok) {
+    showPrompt("POST WAS SUCCESFULLY DELETED", "rgb(255, 68, 68)");
+  }
   console.log(res);
   updateGridPosts();
 }
@@ -140,15 +143,16 @@ async function createPost(title, image, body, uid) {
     body: postAsJson,
   });
   if (res.ok) {
-    showPrompt("NEW POST SUCCESFULLY CREATED");
+    showPrompt("NEW POST SUCCESFULLY CREATED", "rgb(117, 214, 117)");
   }
   const response = await res.json();
   updateGridPosts();
 }
 
-function showPrompt(message) {
+function showPrompt(message, color) {
   const prompt = document.querySelector("#feedback");
   prompt.textContent = message;
+  prompt.style.backgroundColor = color;
   prompt.addEventListener("animationend", hidePrompt);
   prompt.classList.remove("hidden");
 }
@@ -189,6 +193,9 @@ async function deleteUser(user) {
   const id = user.id;
   const url = `${endpoint}/${queryUsers}/${id}.json`;
   const res = await fetch(url, { method: "DELETE" });
+  if (res.ok) {
+    showPrompt("USER WAS SUCCESFULLY DELETED", "rgb(255, 68, 68)");
+  }
   console.log(res);
   updateGridUsers();
 }
@@ -203,7 +210,7 @@ async function createUsers(image, mail, name, phone, title) {
     body: userAsJson,
   });
   if (res.ok) {
-    showPrompt("NEW USER SUCCESFULLY CREATED");
+    showPrompt("NEW USER SUCCESFULLY CREATED", "rgb(117, 214, 117)");
   }
   const response = await res.json();
   updateGridUsers();
