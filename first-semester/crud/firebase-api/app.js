@@ -139,8 +139,25 @@ async function createPost(title, image, body, uid) {
     method: "POST",
     body: postAsJson,
   });
+  if (res.ok) {
+    showPrompt("NEW POST SUCCESFULLY CREATED");
+  }
   const response = await res.json();
   updateGridPosts();
+}
+
+function showPrompt(message) {
+  const prompt = document.querySelector("#feedback");
+  prompt.textContent = message;
+  prompt.addEventListener("animationend", hidePrompt);
+  prompt.classList.remove("hidden");
+}
+
+function hidePrompt() {
+  const prompt = document.querySelector("#feedback");
+  prompt.textContent = "";
+  prompt.offsetHeight;
+  prompt.classList.add("hidden");
 }
 
 // === UPDATE (PUT) === //
@@ -185,6 +202,9 @@ async function createUsers(image, mail, name, phone, title) {
     method: "POST",
     body: userAsJson,
   });
+  if (res.ok) {
+    showPrompt("NEW USER SUCCESFULLY CREATED");
+  }
   const response = await res.json();
   updateGridUsers();
 }

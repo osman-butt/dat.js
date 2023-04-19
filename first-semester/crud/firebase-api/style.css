@@ -16,6 +16,25 @@ h1 {
   padding: 0.5em;
 }
 
+#feedback {
+  text-align: center;
+  padding: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: rgb(117, 214, 117);
+  animation: fade-out 3s forwards;
+}
+
+@keyframes fade-out {
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .create-container {
   text-align: center;
 }
