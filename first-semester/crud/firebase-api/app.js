@@ -9,10 +9,33 @@ const queryUsers = "users";
 
 async function initApp() {
   console.log("initApp: app.js is running 🎉");
-  const posts = await getPosts();
-  const users = await getUsers();
-  displayPosts(posts);
-  displayUsers(users);
+  // const posts = await getPosts();
+  // const users = await getUsers();
+  // displayPosts(posts);
+  // displayUsers(users);
+  updateGridPosts();
+  updateGridUsers();
+  document
+    .querySelector("#new-post-btn")
+    .addEventListener("click", () =>
+      createPost(
+        "My title",
+        "https://images.unsplash.com/photo-1642006953663-06f0387f5652?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyOTA4MTB8MHwxfGFsbHw0fHx8fHx8Mnx8MTY0MjA3NTAwMQ&ixlib=rb-1.2.1&q=80&w=400",
+        "body",
+        "uid"
+      )
+    );
+  document
+    .querySelector("#new-user-btn")
+    .addEventListener("click", () =>
+      createUsers(
+        "https://images.unsplash.com/photo-1642006953663-06f0387f5652?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyOTA4MTB8MHwxfGFsbHw0fHx8fHx8Mnx8MTY0MjA3NTAwMQ&ixlib=rb-1.2.1&q=80&w=400",
+        "hello@mail.com",
+        "My name",
+        "123123",
+        "lecturer"
+      )
+    );
 }
 
 async function displayPosts(posts) {
@@ -29,10 +52,10 @@ async function displayUsers(users) {
   console.log("---displayUsers---");
   document.querySelector("#grid-users").innerHTML = "";
   if (users.length > 0) {
-    showGrid();
+    showGridUsers();
     users.forEach(displayUser);
   } else {
-    hideGrid();
+    hideGridUsers();
   }
 }
 
@@ -45,6 +68,19 @@ async function updateGridPosts() {
     posts.forEach(displayPost);
   } else {
     hideGrid();
+  }
+}
+
+async function updateGridUsers() {
+  console.log("---updateGridUser---");
+  document.querySelector("#grid-users").innerHTML = "";
+  const users = await getUsers();
+  console.log(users);
+  if (users.length > 0) {
+    showGridUsers();
+    users.forEach(displayUser);
+  } else {
+    hideGridUsers();
   }
 }
 
@@ -61,6 +97,20 @@ function showGrid() {
   document.querySelector("#grid-posts").classList.remove("hidden");
 }
 
+function hideGridUsers() {
+  document.querySelector("#no-data").offsetHeight;
+  document.querySelector("#grid-users").offsetHeight;
+  document.querySelector("#grid-users").classList.remove("hidden");
+  document.querySelector("#no-data").classList.remove("hidden");
+}
+function showGridUsers() {
+  document.querySelector("#no-data").offsetHeight;
+  document.querySelector("#grid-users").offsetHeight;
+  document.querySelector("#no-data").classList.add("hidden");
+  document.querySelector("#grid-users").classList.remove("hidden");
+}
+
+// ===== CRUD POSTS ===== //
 // === READ (GET) === //
 async function getPosts() {
   console.log("---getPosts---");
@@ -93,6 +143,19 @@ async function createPost(title, image, body, uid) {
   updateGridPosts();
 }
 
+// === UPDATE (PUT) === //
+async function updatePost(title, image, body, uid, id) {
+  const postToUpdate = { title, image, body, uid };
+  const postAsJson = JSON.stringify(postToUpdate);
+  const url = `${endpoint}/${query}/${id}.json`;
+  const res = await fetch(url, { method: "PUT", body: postAsJson });
+  console.log(`UPDATED POST STATUS: ${res.status}`);
+  const data = await res.json();
+  console.log(data);
+  updateGridPosts();
+}
+
+// ===== CRUD USERS ===== //
 // === READ (GET) === //
 async function getUsers() {
   console.log("---getUsers---");
@@ -110,7 +173,32 @@ async function deleteUser(user) {
   const url = `${endpoint}/${queryUsers}/${id}.json`;
   const res = await fetch(url, { method: "DELETE" });
   console.log(res);
-  updateGridPosts();
+  updateGridUsers();
+}
+
+// === CREATE (POST) === //
+async function createUsers(image, mail, name, phone, title) {
+  console.log("---createUsers---");
+  const newUser = { image, mail, name, phone, title };
+  const userAsJson = JSON.stringify(newUser);
+  const res = await fetch(`${endpoint}/${queryUsers}.json`, {
+    method: "POST",
+    body: userAsJson,
+  });
+  const response = await res.json();
+  updateGridUsers();
+}
+
+// === UPDATE (PUT) === //
+async function updateUser(image, mail, name, phone, title, id) {
+  const postToUpdate = { image, mail, name, phone, title };
+  const postAsJson = JSON.stringify(postToUpdate);
+  const url = `${endpoint}/${queryUsers}/${id}.json`;
+  const res = await fetch(url, { method: "PUT", body: postAsJson });
+  console.log(`UPDATED POST STATUS: ${res.status}`);
+  const data = await res.json();
+  console.log(res.status);
+  updateGridUsers();
 }
 
 // Converts object of objects to array of objects
