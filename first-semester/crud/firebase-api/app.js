@@ -70,16 +70,6 @@ async function getPosts() {
   return posts;
 }
 
-// === READ (GET) === //
-async function getUsers() {
-  console.log("---getUsers---");
-  const response = await fetch(`${endpoint}/${queryUsers}.json`);
-  const data = await response.json();
-  const users = preparePostData(data);
-  console.log(users);
-  return users;
-}
-
 // === DELETE (DELETE) === //
 async function deletePost(post) {
   console.log("---deletePost---");
@@ -91,16 +81,35 @@ async function deletePost(post) {
 }
 
 // === CREATE (POST) === //
-async function createPost(title, image) {
+async function createPost(title, image, body, uid) {
   console.log("---createPost---");
-  const newPost = { title, image };
+  const newPost = { title, image, body, uid };
   const postAsJson = JSON.stringify(newPost);
   const res = await fetch(`${endpoint}/${query}.json`, {
     method: "POST",
     body: postAsJson,
   });
-  const data = await res.json();
-  console.log(data);
+  const response = await res.json();
+  updateGridPosts();
+}
+
+// === READ (GET) === //
+async function getUsers() {
+  console.log("---getUsers---");
+  const response = await fetch(`${endpoint}/${queryUsers}.json`);
+  const data = await response.json();
+  const users = preparePostData(data);
+  console.log(data.ok);
+  return users;
+}
+
+// === DELETE (DELETE) === //
+async function deleteUser(user) {
+  console.log("---deletePost---");
+  const id = user.id;
+  const url = `${endpoint}/${queryUsers}/${id}.json`;
+  const res = await fetch(url, { method: "DELETE" });
+  console.log(res);
   updateGridPosts();
 }
 
@@ -163,11 +172,11 @@ function displayUser(users) {
     .addEventListener("click", function () {
       showModalUsers(users);
     });
-  // document
-  //   .querySelector("#grid-users article:last-child button")
-  //   .addEventListener("click", function () {
-  //     deletePost(users);
-  //   });
+  document
+    .querySelector("#grid-users article:last-child button")
+    .addEventListener("click", function () {
+      deleteUser(users);
+    });
 }
 
 function showModal(post) {
