@@ -15,3 +15,79 @@ h1 {
   margin: 0;
   padding: 0.5em;
 }
+
+h2 {
+  text-align: center;
+  margin: 0;
+  padding: 0.5em;
+}
+
+label {
+  font-weight: bold;
+}
+#form-container {
+  background-color: white;
+  margin: auto;
+  margin-top: 1em;
+  padding: 1em;
+  width: 30em;
+  border-radius: 1em;
+}
+
+fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1em;
+}
+
+#name-container {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 2fr;
+  column-gap: 1em;
+}
+
+#address-container {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 1em;
+}
+
+#post-container {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 1em;
+}
+
+#extra-address-container,
+#tel-container,
+#email-container {
+  grid-column: 1 / span 2;
+  display: grid;
+}
+
+#fsubmit-btn {
+  grid-column: 1 / span 2;
+  justify-self: center;
+  background-color: #44831e;
+  color: white;
+  padding: 0.7em;
+  border-radius: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#fsubmit-btn:hover {
+  box-shadow: 0 2px 8px 0 black;
+}
+
+@media (min-width: 600px) {
+  #form-container {
+    grid-template-columns: 1fr 1fr;
+    width: 30em;
+    margin: auto;
+    margin-top: 1em;
+  }
+}

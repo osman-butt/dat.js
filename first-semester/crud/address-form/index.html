@@ -13,6 +13,47 @@
   </head>
   <body>
     <header><h1>ADRESSE-FORM</h1></header>
+    <section id="form-container">
+      <form action="" id="addressform" method="">
+        <h2>Addresse oplysninger</h2>
+        <fieldset>
+          <section id="name-container">
+            <label for="fname">Navn</label>
+            <input type="text" id="fname" name="fname" required />
+          </section>
+          <section id="address-container">
+            <label for="faddress">Gade/vej</label>
+            <label for="fhouseno">Husnummer</label>
+            <input type="text" id="faddress" name="faddress" required />
+            <input type="text" id="fhouseno" name="fhouseno" required />
+          </section>
+          <section id="post-container">
+            <label for="fzip">Postnummer</label>
+            <label for="fcity">By</label>
+            <input type="text" id="fzip" name="fzip" required />
+            <input type="text" id="fcity" name="fcity" readonly />
+          </section>
+          <section id="extra-address-container">
+            <label for="fsecondaddress">Evt. C/O adresse (frivilligt)</label>
+            <input type="text" id="fsecondaddress" name="fsecondaddress" />
+          </section>
+          <section id="tel-container">
+            <label for="ftelephone">Telefonnummer (frivilligt)</label>
+            <input type="tel" id="ftelephone" name="ftelephone" />
+          </section>
+          <section id="email-container">
+            <label for="fmail">E-mail</label>
+            <input type="email" id="fmail" name="fmail" required />
+          </section>
+          <input
+            type="submit"
+            id="fsubmit-btn"
+            name="fsubmit-btn"
+            value="Næste"
+          />
+        </fieldset>
+      </form>
+    </section>
     <script src="app.js"></script>
   </body>
 </html>
