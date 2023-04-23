@@ -13,6 +13,41 @@
   </head>
   <body>
     <header><h1>RGB SLIDER</h1></header>
+    <section id="form-container">
+      <form action="" id="frgbslider">
+        <fieldset>
+          <legend>RGB</legend>
+          <label for="fred">R: <span id="fredoutput">0</span></label>
+          <input
+            type="range"
+            name="fred"
+            id="fred"
+            min="0"
+            max="255"
+            value="0"
+          />
+          <label for="fgreen">G: <span id="fgreenoutput">0</span></label>
+          <input
+            type="range"
+            name="fgreen"
+            id="fgreen"
+            min="0"
+            max="255"
+            value="0"
+          />
+          <label for="fblue">B: <span id="fblueoutput">0</span></label>
+          <input
+            type="range"
+            name="fblue"
+            id="fblue"
+            min="0"
+            max="255"
+            value="0"
+          />
+        </fieldset>
+      </form>
+      <section id="rgboutput"></section>
+    </section>
     <script src="app.js"></script>
   </body>
 </html>
