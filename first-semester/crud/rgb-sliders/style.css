@@ -41,5 +41,6 @@ fieldset {
     grid-template-columns: 1fr 1fr;
     width: 30em;
     margin: auto;
+    margin-top: 1em;
   }
 }

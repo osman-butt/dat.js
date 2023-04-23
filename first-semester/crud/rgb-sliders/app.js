@@ -22,4 +22,6 @@ function changeColor() {
   console.log(red + ", " + green + ", " + blue);
   document.querySelector("#rgboutput").style.backgroundColor =
     "rgb(" + red + "," + green + ", " + blue + ")";
+  document.querySelector("header").style.backgroundColor =
+    "rgb(" + red + "," + green + ", " + blue + ")";
 }
