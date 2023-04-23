@@ -1,3 +1,54 @@
-.body {
+body {
+  font-family: "Work Sans", sans-serif;
   margin: 0;
+}
+
+header {
+  background-color: black;
+}
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0.5em;
+}
+
+#calc-container {
+  width: 25em;
+  margin: auto;
+  padding: 1em;
+  margin-top: 2em;
+  border: solid;
+}
+
+fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1em;
+}
+
+label {
+  font-weight: bold;
+}
+
+.fbtn {
+  justify-self: center;
+  padding: 0.4em;
+}
+
+#calc-output {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1em;
+}
+
+#calc-output > label {
+  text-align: right;
+}
+
+#calc-output > input {
+  text-align: left;
 }

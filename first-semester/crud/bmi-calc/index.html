@@ -5,9 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Work+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>BMI Calculator</title>
   </head>
   <body>
+    <header><h1>BMI BEREGNER</h1></header>
+    <section id="calc-container">
+      <form action="" id="fcalc" method="">
+        <fieldset>
+          <legend>BMI BEREGNER</legend>
+          <label for="fheight">Din højde (cm):</label>
+          <input type="number" name="fheight" id="fheight" required />
+          <label for="fweight">Din vægt (kg):</label>
+          <input type="number" name="fweight" id="fweight" required />
+          <input type="submit" class="fbtn" id="fcalc-btn" value="Beregn BMI" />
+          <input
+            type="reset"
+            class="fbtn"
+            id="freset-btn"
+            value="Start forfra"
+          />
+        </fieldset>
+      </form>
+      <section id="calc-output">
+        <label for="fbmi">BMI:</label>
+        <output
+          form="fcalc"
+          id="fbmi"
+          name="fbmi"
+          for="fweight/(fheight*fheight)"
+        ></output>
+        <label for="ftext">Betydning:</label>
+        <output
+          form="fcalc"
+          id="ftext"
+          name="ftext"
+          for="fheight+fweight"
+        ></output>
+      </section>
+    </section>
     <script src="app.js"></script>
   </body>
 </html>
