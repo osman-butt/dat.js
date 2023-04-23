@@ -28,7 +28,7 @@ async function getCity(zip) {
   return data.navn;
 }
 
-function sendData(event) {
+async function sendData(event) {
   event.preventDefault();
   const elements = document.forms.addressform;
   const formData = {
@@ -41,4 +41,41 @@ function sendData(event) {
     email: elements.fmail.value,
   };
   console.log(formData);
+  await createInfo(formData);
+  elements.reset();
+  document.querySelector("#fcity").style.backgroundColor = "rgb(255,255,255)";
+}
+
+async function createInfo(formData) {
+  console.log("---createPost---");
+  const postAsJson = JSON.stringify(formData);
+  const res = await fetch(
+    `https://rest-api-intro-default-rtdb.europe-west1.firebasedatabase.app/customer.json`,
+    {
+      method: "POST",
+      body: postAsJson,
+    }
+  );
+  const response = await res.json();
+  if (res.status) {
+    showPrompt("OPLYSNINGERNE BLEV GEMT", "rgb(117, 214, 117)");
+  }
+  console.log("Send response: " + res.status);
+}
+
+function showPrompt(message, color) {
+  const html = /*html*/ `
+  <div id="feedback" class="hidden"></div>
+  `;
+  document.querySelector("header").insertAdjacentHTML("afterend", html);
+  const prompt = document.querySelector("#feedback");
+  prompt.textContent = message;
+  prompt.style.backgroundColor = color;
+  prompt.addEventListener("animationend", hidePrompt);
+  prompt.classList.remove("hidden");
+}
+
+function hidePrompt() {
+  const prompt = document.querySelector("#feedback");
+  prompt.remove();
 }

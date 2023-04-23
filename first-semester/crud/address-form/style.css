@@ -83,11 +83,33 @@ fieldset {
   box-shadow: 0 2px 8px 0 black;
 }
 
-@media (min-width: 600px) {
+#feedback {
+  text-align: center;
+  padding: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  animation: fade-out 3s forwards;
+}
+
+@keyframes fade-out {
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* @media (min-width: 600px) {
   #form-container {
     grid-template-columns: 1fr 1fr;
     width: 30em;
     margin: auto;
     margin-top: 1em;
   }
-}
+} */
