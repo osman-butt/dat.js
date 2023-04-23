@@ -1,5 +1,3 @@
-# dat.js
-
 ## CRUD
 
 - dataforsyningen-api github pages [link](https://osman-butt.github.io/dat.js/first-semester/crud/dataforsyningen-api/).
