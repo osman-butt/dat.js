@@ -1,0 +1,57 @@
+.body {
+  margin: 0;
+}
+
+#signup-form {
+  background-color: rgb(230, 226, 226);
+  margin: auto;
+  padding: 1em;
+  width: 40em;
+  border-radius: 2em;
+}
+
+label {
+  display: inline-block;
+  text-align: right;
+}
+
+h2 {
+  text-align: center;
+}
+
+#payment-freq-form,
+#payment-form {
+  padding-top: 1em;
+  margin: 1em;
+  border: solid;
+}
+
+#payment {
+  grid-column: 1 / span 2;
+}
+#terms-email-form {
+  grid-column: 1 / span 2;
+}
+
+#info,
+#site-data {
+  border: solid;
+  padding: 1em;
+  margin: 1em;
+  grid-column: 1 / span 2;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#buttons {
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+#terms-email-form {
+  text-align: center;
+}

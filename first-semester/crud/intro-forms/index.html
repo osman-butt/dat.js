@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Forms intro</title>
+  </head>
+  <body>
+    <section id="signup-form">
+      <h2>Sign up form</h2>
+      <form action="" id="signup" method="">
+        <section id="info">
+          <label for="name-form">Full name</label>
+          <input
+            type="text"
+            id="name-form"
+            name="fullname"
+            placeholder="Enter name"
+          /><br />
+          <label for="email-form">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            id="email-form"
+            placeholder="Enter email"
+          /><br />
+        </section>
+        <section id="site-data">
+          <label for="user-form">Username</label>
+          <input
+            type="text"
+            id="user-form"
+            name="username"
+            placeholder="Enter username"
+            required
+          /><br />
+          <label for="password-form">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password-form"
+            placeholder="Enter password"
+          /><br />
+          <label for="password-repeat-form">Repeat password</label>
+          <input
+            type="password"
+            id="password-repeat-form"
+            placeholder="Enter password"
+          />
+        </section>
+        <section id="payment-section">
+          <section id="payment-form">
+            <input
+              type="radio"
+              id="payment-free-form"
+              name="payment"
+              value="Free"
+            />
+            <label for="payment-free-form">Free</label><br />
+            <input
+              type="radio"
+              id="payment-cheap-form"
+              name="payment"
+              value="Cheap"
+            />
+            <label for="payment-cheap-form">Cheap</label><br />
+            <input
+              type="radio"
+              id="payment-fair-form"
+              name="payment"
+              value="Fair"
+            />
+            <label for="payment-fair-form">Fair</label><br />
+            <input
+              type="radio"
+              id="payment-expensive-form"
+              name="payment"
+              value="Expensive"
+            />
+            <label for="payment-expensive-form">Expensive</label>
+          </section>
+          <section id="payment-freq-form">
+            <label for="payment-freq">Payment frequency</label>
+            <select name="paymentfreq" id="payment-freq">
+              <option value="Week">Week</option>
+              <option value="Month">Month</option>
+              <option value="Year">Year</option>
+            </select>
+          </section>
+        </section>
+        <section id="terms-email-form">
+          <input type="checkbox" id="checkbox-emails" name="spam" />
+          <label for="checkbox-emails">I would like to recieve email</label
+          ><br />
+          <input type="checkbox" id="checkbox-terms" name="terms" />
+          <label for="checkbox-terms">I accept terms and conditions</label>
+        </section>
+        <section id="buttons">
+          <input type="submit" value="Sign up" id="signup-btn" />
+          <input type="reset" value="Clear form" id="clear-btn" />
+        </section>
+      </form>
+    </section>
+    <script src="app.js"></script>
+  </body>
+</html>
