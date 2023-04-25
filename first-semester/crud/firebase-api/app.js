@@ -50,8 +50,7 @@ async function showCreatePostModal() {
 }
 
 function closeModal(event) {
-  // event.preventDefault();
-  // document.querySelector("#modal-post-create").close();
+  console.log(event.form);
   if (this.form === undefined) {
     this.parentElement.close();
   } else {
@@ -69,7 +68,7 @@ function createPostClicked(event) {
     uid: elements.fuid.value,
   };
   createPost(post);
-  closeModal();
+  document.querySelector("#modal-post-create").close();
   elements.ftitle.value = "";
   elements.fimg.value = "";
   elements.fbody.value = "";
