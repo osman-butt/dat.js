@@ -44,11 +44,31 @@ async function initApp() {
 async function showCreatePostModal() {
   document.querySelector("#modal-post-create").showModal();
   document.querySelector("#fcancel-btn").addEventListener("click", closeModal);
-  // document.querySelector().addEventListener("click", createPost);
+  document
+    .querySelector("#modal-post-create")
+    .addEventListener("submit", createPostClicked);
 }
 
 function closeModal(event) {
+  // event.preventDefault();
   document.querySelector("#modal-post-create").close();
+}
+
+function createPostClicked(event) {
+  event.preventDefault();
+  const elements = document.forms.formcreate;
+  const post = {
+    title: elements.ftitle.value,
+    image: elements.fimg.value,
+    body: elements.fbody.value,
+    uid: elements.fuid.value,
+  };
+  createPost(post);
+  closeModal();
+  elements.ftitle.value = "";
+  elements.fimg.value = "";
+  elements.fbody.value = "";
+  elements.fuid.value = "";
 }
 
 async function displayPosts(posts) {
@@ -147,10 +167,12 @@ async function deletePost(post) {
 }
 
 // === CREATE (POST) === //
-async function createPost(title, image, body, uid) {
+// async function createPost(title, image, body, uid) {
+async function createPost(post) {
   console.log("---createPost---");
-  const newPost = { title, image, body, uid };
-  const postAsJson = JSON.stringify(newPost);
+  // const newPost = { title, image, body, uid };
+  // const postAsJson = JSON.stringify(newPost);
+  const postAsJson = JSON.stringify(post);
   const res = await fetch(`${endpoint}/${query}.json`, {
     method: "POST",
     body: postAsJson,
@@ -159,6 +181,7 @@ async function createPost(title, image, body, uid) {
     showPrompt("NEW POST SUCCESFULLY CREATED", "rgb(117, 214, 117)");
   }
   const response = await res.json();
+  console.log(res.status, "status code");
   updateGridPosts();
 }
 

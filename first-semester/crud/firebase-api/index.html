@@ -80,23 +80,33 @@
     </dialog>
     <!--------- CREATE DIALOG --------->
     <dialog id="modal-post-create">
-      <h2>Create Posts</h2>
-      <form method="" id="formcreate">
+      <h2>Create Post</h2>
+      <form method="" action="" id="formcreate">
         <label for="ftitle">Title:</label>
-        <input type="text" id="ftitle" name="ftitle" />
+        <input type="text" id="ftitle" name="ftitle" required />
 
         <label for="fbody">Body:</label>
-        <input type="text" id="fbody" name="fbody" />
+        <input type="text" id="fbody" name="fbody" required />
 
         <label for="fuid">User ID:</label>
-        <input type="text" id="fuid" name="fuid" />
+        <input type="text" id="fuid" name="fuid" required />
 
         <label for="fimg">Image url:</label>
-        <input type="url" id="fimg" name="fimg" />
+        <input type="url" id="fimg" name="fimg" required />
         <section id="fbutton">
-          <input type="reset" id="fcancel-btn" value="Cancel" />
+          <input
+            type="reset"
+            id="fcancel-btn"
+            name="fcancel-btn"
+            value="Cancel"
+          />
           <!-- <button id="fcancel-btn">Cancel</button> -->
-          <input type="submit" id="fcreate-btn" value="Create" />
+          <input
+            type="submit"
+            id="fcreate-btn"
+            name="fcreate-btn"
+            value="Create"
+          />
         </section>
       </form>
     </dialog>
