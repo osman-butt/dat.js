@@ -22,7 +22,7 @@ h1 {
   position: sticky;
   top: 0;
   z-index: 1;
-  animation: fade-out 3s forwards;
+  animation: fade-out 3s forwards linear;
 }
 
 @keyframes fade-out {
@@ -89,6 +89,10 @@ h1 {
   cursor: pointer;
 }
 
+form > button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
 .grid-item > button {
   text-align: center;
   padding: 0.5em 1em 0.5em;
