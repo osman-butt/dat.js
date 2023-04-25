@@ -78,6 +78,24 @@
         <button>CLOSE</button>
       </form>
     </dialog>
+    <!--------- CREATE DIALOG --------->
+    <dialog id="modal-post-create">
+      <h2>Create Posts</h2>
+      <form method="" id="formcreate">
+        <label for="ftitle">Title:</label>
+        <input type="text" id="ftitle" name="ftitle" />
+
+        <label for="fbody">Body:</label>
+        <input type="text" id="fbody" name="fbody" />
+
+        <label for="fimg">Image url:</label>
+        <input type="text" id="fimg" name="fimg" />
+        <section id="fbutton">
+          <input type="reset" id="fcancel-btn" value="Cancel" />
+          <input type="submit" id="fcreate-btn" value="Create" />
+        </section>
+      </form>
+    </dialog>
     <script src="app.js"></script>
   </body>
 </html>

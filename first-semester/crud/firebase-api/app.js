@@ -9,6 +9,7 @@ const queryUsers = "users";
 
 async function initApp() {
   console.log("initApp: app.js is running 🎉");
+  document.querySelector("#modal-post-create").showModal();
   // const posts = await getPosts();
   // const users = await getUsers();
   // displayPosts(posts);

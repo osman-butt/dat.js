@@ -152,3 +152,42 @@ h1 {
 .hidden {
   display: none;
 }
+
+#formcreate {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  row-gap: 1em;
+  column-gap: 1em;
+  padding: 1em;
+}
+
+#modal-post-create {
+  border: none;
+  border-radius: 1em;
+}
+
+#fcancel-btn,
+#fcreate-btn {
+  justify-self: center;
+  padding: 0.4em 0.7em 0.4em 0.7em;
+  border-radius: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+#modal-post-create > h2 {
+  text-align: center;
+}
+
+#formcreate > input {
+  width: 15vw;
+}
+
+#fbutton {
+  padding-top: 1em;
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
