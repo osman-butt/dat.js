@@ -1,3 +1,4 @@
 template
 *.txt
 .vscode
+.vscode/settings.json
