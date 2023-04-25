@@ -9,25 +9,25 @@ const queryUsers = "users";
 
 async function initApp() {
   console.log("initApp: app.js is running 🎉");
-  // const posts = await getPosts();
-  // const users = await getUsers();
-  // displayPosts(posts);
-  // displayUsers(users);
   document
     .querySelector("#new-post-btn")
     .addEventListener("click", showCreatePostModal);
+  document
+    .querySelector("#form-delete-post")
+    .addEventListener("submit", deletePostClicked);
+  document
+    .querySelector("#formupdate")
+    .addEventListener("submit", updatePostClicked);
+  document
+    .querySelector("#form-delete-post")
+    .addEventListener("click", closeModal);
+  document
+    .querySelector("#fupdate-cancel-btn")
+    .addEventListener("click", closeModal);
+
   updateGridPosts();
   updateGridUsers();
-  // document
-  //   .querySelector("#new-post-btn")
-  //   .addEventListener("click", () =>
-  //     createPost(
-  //       "My title",
-  //       "https://images.unsplash.com/photo-1642006953663-06f0387f5652?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyOTA4MTB8MHwxfGFsbHw0fHx8fHx8Mnx8MTY0MjA3NTAwMQ&ixlib=rb-1.2.1&q=80&w=400",
-  //       "body",
-  //       "uid"
-  //     )
-  //   );
+
   document
     .querySelector("#new-user-btn")
     .addEventListener("click", () =>
@@ -51,7 +51,12 @@ async function showCreatePostModal() {
 
 function closeModal(event) {
   // event.preventDefault();
-  document.querySelector("#modal-post-create").close();
+  // document.querySelector("#modal-post-create").close();
+  if (this.form === undefined) {
+    this.parentElement.close();
+  } else {
+    this.form.parentElement.close();
+  }
 }
 
 function createPostClicked(event) {
@@ -154,9 +159,9 @@ async function getPosts() {
 }
 
 // === DELETE (DELETE) === //
-async function deletePost(post) {
+async function deletePost(id) {
   console.log("---deletePost---");
-  const id = post.id;
+  // const id = post.id;
   const url = `${endpoint}/${query}/${id}.json`;
   const res = await fetch(url, { method: "DELETE" });
   if (res.ok) {
@@ -206,7 +211,7 @@ async function updatePost(title, image, body, uid, id) {
   const postAsJson = JSON.stringify(postToUpdate);
   const url = `${endpoint}/${query}/${id}.json`;
   const res = await fetch(url, { method: "PUT", body: postAsJson });
-  console.log(`UPDATED POST STATUS: ${res.status}`);
+  console.log(`UPDATED POST STATUS: ${res.status} - url: ${url}`);
   const data = await res.json();
   console.log(data);
   updateGridPosts();
@@ -225,7 +230,7 @@ async function getUsers() {
 
 // === DELETE (DELETE) === //
 async function deleteUser(user) {
-  console.log("---deletePost---");
+  console.log("---deleteUser---");
   const id = user.id;
   const url = `${endpoint}/${queryUsers}/${id}.json`;
   const res = await fetch(url, { method: "DELETE" });
@@ -285,7 +290,8 @@ function displayPost(post) {
             alt=""
           />
           <h2 style="text-align: center;">${post.title}</h2>
-          <button id="delete-btn">DELETE</button>
+          <button class="delete-btn">DELETE</button>
+          <button class="update-btn">UPDATE</button>
         </article>
   `;
   document
@@ -297,11 +303,51 @@ function displayPost(post) {
       showModal(post);
     });
   document
-    .querySelector("#grid-posts article:last-child button")
-    .addEventListener("click", function () {
-      deletePost(post);
-    });
+    .querySelector("#grid-posts article:last-child .delete-btn")
+    .addEventListener("click", deleteClicked);
+  document
+    .querySelector("#grid-posts article:last-child .update-btn")
+    .addEventListener("click", updateClicked);
+
+  function deleteClicked() {
+    console.log("---deleteClicked---");
+    console.log(post.title);
+    document
+      .querySelector("#form-delete-post")
+      .setAttribute("data-id", post.id);
+    document.querySelector("#dialog-delete-post").showModal();
+  }
+
+  function updateClicked() {
+    console.log("---updateClicked---");
+    document.querySelector("#formupdate").setAttribute("data-id", post.id);
+    document.querySelector("#title-update").value = post.title;
+    document.querySelector("#body-update").value = post.body;
+    document.querySelector("#img-update").value = post.image;
+    document.querySelector("#uid-update").value = post.uid;
+    document.querySelector("#dialog-update-post").showModal();
+  }
 }
+
+function deletePostClicked(event) {
+  const id = event.target.getAttribute("data-id");
+  deletePost(id);
+}
+
+function updatePostClicked(event) {
+  event.preventDefault();
+  const form = event.target; // or "this"
+  // extract the values from inputs in the form
+  console.log(form.title);
+  const title = form.title.value;
+  const body = form.body.value;
+  const image = form.img.value;
+  const uid = form.uid.value;
+  const id = form.getAttribute("data-id");
+  updatePost(title, image, body, uid, id);
+  document.querySelector("#dialog-update-post").close(); // close dialog
+}
+
 function displayUser(users) {
   console.log("---displayUsers---");
   const postHtml = /*html*/ `

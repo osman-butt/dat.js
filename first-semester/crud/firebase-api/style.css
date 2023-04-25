@@ -153,7 +153,8 @@ h1 {
   display: none;
 }
 
-#formcreate {
+#formcreate,
+#formupdate {
   display: grid;
   grid-template-columns: 1fr 2fr;
   row-gap: 1em;
@@ -161,7 +162,8 @@ h1 {
   padding: 1em;
 }
 
-#modal-post-create {
+#modal-post-create,
+#dialog-update-post {
   border: none;
   border-radius: 1em;
   padding: 1em;
@@ -178,11 +180,13 @@ h1 {
   color: white;
 }
 
-#modal-post-create > h2 {
+#modal-post-create > h2,
+#dialog-update-post > h2 {
   text-align: center;
 }
 
-#formcreate > input {
+#formcreate > input,
+#dialog-update-post > input {
   width: 15vw;
 }
 
@@ -193,6 +197,7 @@ h1 {
   grid-template-columns: 1fr 1fr;
 }
 
-#fbutton > input:hover {
+#fbutton > input:hover,
+#fupdatebutton > input:hover {
   box-shadow: 0 2px 8px 0 black;
 }
