@@ -164,6 +164,7 @@ h1 {
 #modal-post-create {
   border: none;
   border-radius: 1em;
+  padding: 1em;
 }
 
 #fcancel-btn,
@@ -190,4 +191,8 @@ h1 {
   grid-column: 1 / span 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+#fbutton > input:hover {
+  box-shadow: 0 2px 8px 0 black;
 }

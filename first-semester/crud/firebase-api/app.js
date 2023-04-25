@@ -9,23 +9,25 @@ const queryUsers = "users";
 
 async function initApp() {
   console.log("initApp: app.js is running 🎉");
-  document.querySelector("#modal-post-create").showModal();
   // const posts = await getPosts();
   // const users = await getUsers();
   // displayPosts(posts);
   // displayUsers(users);
-  updateGridPosts();
-  updateGridUsers();
   document
     .querySelector("#new-post-btn")
-    .addEventListener("click", () =>
-      createPost(
-        "My title",
-        "https://images.unsplash.com/photo-1642006953663-06f0387f5652?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyOTA4MTB8MHwxfGFsbHw0fHx8fHx8Mnx8MTY0MjA3NTAwMQ&ixlib=rb-1.2.1&q=80&w=400",
-        "body",
-        "uid"
-      )
-    );
+    .addEventListener("click", showCreatePostModal);
+  updateGridPosts();
+  updateGridUsers();
+  // document
+  //   .querySelector("#new-post-btn")
+  //   .addEventListener("click", () =>
+  //     createPost(
+  //       "My title",
+  //       "https://images.unsplash.com/photo-1642006953663-06f0387f5652?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyOTA4MTB8MHwxfGFsbHw0fHx8fHx8Mnx8MTY0MjA3NTAwMQ&ixlib=rb-1.2.1&q=80&w=400",
+  //       "body",
+  //       "uid"
+  //     )
+  //   );
   document
     .querySelector("#new-user-btn")
     .addEventListener("click", () =>
@@ -37,6 +39,16 @@ async function initApp() {
         "lecturer"
       )
     );
+}
+
+async function showCreatePostModal() {
+  document.querySelector("#modal-post-create").showModal();
+  document.querySelector("#fcancel-btn").addEventListener("click", closeModal);
+  // document.querySelector().addEventListener("click", createPost);
+}
+
+function closeModal(event) {
+  document.querySelector("#modal-post-create").close();
 }
 
 async function displayPosts(posts) {
