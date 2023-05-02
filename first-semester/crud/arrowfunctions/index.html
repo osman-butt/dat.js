@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Students</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="shortcut icon" href="#" type="image/x-icon" />
+    </head>
+    <body>
+        <h1>Funktioner</h1>
+        <button id="btn">Click me!</button>
+
+        <label for="filter">Filter:</label>
+        <select name="filter" id="filter">
+            <option value="all">all</option>
+            <option value="gryffindor">Gryffindor</option>
+            <option value="hufflepuff">Hufflepuff</option>
+            <option value="ravenclaw">Ravenclaw</option>
+            <option value="slytherin">Slytherin</option>
+        </select>
+
+        <table>
+            <thead>
+                <tr id="sorting-header">
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>house</th>
+                    <th>gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Harry</td>
+                    <td>Potter</td>
+                    <td>Gryffindor</td>
+                    <td>male</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script src="liste.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
