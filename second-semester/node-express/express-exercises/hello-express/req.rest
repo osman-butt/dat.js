@@ -1,0 +1,5 @@
+PUT http://localhost:3000/todos/1
+{
+    "task": "Buy groceries",
+    "completed": true
+}
