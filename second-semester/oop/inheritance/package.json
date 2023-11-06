@@ -1,0 +1,12 @@
+{
+  "name": "inheritance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "object-func.js",
+  "scripts": {
+    "start": "node --watch object-func.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
