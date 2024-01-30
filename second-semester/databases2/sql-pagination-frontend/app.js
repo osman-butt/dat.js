@@ -1,7 +1,7 @@
 import Product from "./model/product.js";
 import ProductRenderer from "./view/productRenderer.js";
 import ListRenderer from "./view/listRenderer.js";
-import { getProducts } from "./rest-api.js";
+import { getProducts, getSomeProducts } from "./rest-api.js";
 
 window.addEventListener("load", initApp);
 
@@ -11,10 +11,19 @@ let productList;
 
 async function initApp() {
   console.log("App is working");
-  await constructData();
-  console.log(products.length);
+  // await constructData();
+  await getAnimalsPaginated(1, 10);
   initViews();
   initEventListeners();
+}
+
+async function getAnimalsPaginated(pageNum, pageSize) {
+  const data = await getSomeProducts(pageNum, pageSize);
+  for (const product of data) {
+    products.push(
+      new Product(product.id, product.name, product.unit_price, product.stock)
+    );
+  }
 }
 
 async function constructData() {

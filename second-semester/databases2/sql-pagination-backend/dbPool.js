@@ -13,6 +13,6 @@ const dbConfig = {
   multipleStatements: true,
 };
 
-const pool = mysql.createPool(dbConfig);
+const connection = await mysql.createConnection(dbConfig);
 
-export default pool;
+export default connection;

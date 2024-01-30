@@ -6,4 +6,12 @@ async function getProducts() {
   return data;
 }
 
-export { getProducts };
+async function getSomeProducts(pageNum, pageSize) {
+  const res = await fetch(
+    `${endpoint}/products?pageNum=${pageNum}&pageSize=${pageSize}`
+  );
+  const data = await res.json();
+  return data;
+}
+
+export { getProducts, getSomeProducts };
